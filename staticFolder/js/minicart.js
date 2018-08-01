@@ -1914,7 +1914,7 @@ var defaults = module.exports = {
     styles: '',
 
     strings: {
-        button: 'سبد اجاره',
+        button: 'اجاره',
         subtotal: 'زیرجمع:',
         discount: 'تخفیف:',
         empty: 'سبد اجاره شما خالی است'

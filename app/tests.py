@@ -1,12 +1,19 @@
 # from django.test import TestCase
+import datetime
+import hashlib
+# from app.models import User
 
-# Create your tests here.
-from passlib.handlers.pbkdf2 import pbkdf2_sha1
+# ppp = "111111"
+#
+# passw = hashlib.md5()
+# passw.update(ppp.encode("utf-8"))
+# print(passw.hexdigest())
+# # name  = User.objects.filter(password=passw)
+#
+# # print(name)
 
-passw = "m2fan6320"
-enc = pbkdf2_sha1.__hash__(passw)
-print(enc)
+i = datetime.datetime.today()
+end = i+datetime.timedelta(days=4)
 
-enc2 = pbkdf2_sha1.__hash__(passw)
-
-print(enc == passw)
+print(end)
+print(i)

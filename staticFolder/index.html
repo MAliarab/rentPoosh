@@ -2,7 +2,7 @@
 <html lang="fa">
 
 <head>
-	<title>title</title>
+	<title>RentPoosh</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="keywords" />
@@ -16,12 +16,13 @@
 		}
 	</script>
 	<!-- //custom-theme -->
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-	<link rel="stylesheet" href="css/shop.css" type="text/css" media="screen" property="" />
-	<link href="css/style7.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    {% load static %}
+	<link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+	<link rel="stylesheet" href="{% static "css/shop.css" %}" type="text/css" media="screen" property="" />
+	<link href="{% static "css/style7.css" %}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome-icons -->
-	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
 	<!-- //font-awesome-icons -->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
 	    crossorigin="anonymous">
@@ -38,7 +39,7 @@
 
 				<div class="logo inner_page_log">
 					<h1>
-						<a class="navbar-brand" href="index.html">
+						<a class="navbar-brand" href="/main">
 							<i>Poosh</i>
 							<span>Rent</span>
 
@@ -55,20 +56,20 @@
 					<nav>
 						<ul>
 							<li>
-								<a href="index.html" class="active">خانه</a>
+								<a href="/main" class="active">خانه</a>
 							</li>
 							<li>
-								<a href="shop.html">زنانه</a>
+								<a href="/items?sex=women">زنانه</a>
 							</li>
 							<li>
-								<a href="shop.html">مردانه</a>
+								<a href="/items?sex=men">مردانه</a>
 							</li>
 							<li>
-								<a href="about.html">درباره ما</a>
+								<a href="/about">درباره ما</a>
 							</li>
 
 							<li>
-								<a href="contact.html">تماس با ما</a>
+								<a href="/contact">تماس با ما</a>
 							</li>
 						</ul>
 					</nav>
@@ -79,11 +80,23 @@
 					</button>
 				</div>
 				<div class="mobile-nav-button-login-register">
-					<form action="login.html">
+                    {% if username %}
+                    {% block username %}
+                    <form action="/exit">
 						<button type="submit" id="trigger-overlay" value="Go to Google">
-							<i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                                <i>{{ username }}</i>
 						</button>
 					</form>
+                    {% endblock %}
+                    {% else %}
+                    {% block elseuser %}
+					<form action="/login">
+						<button type="submit" id="trigger-overlay" value="Go to Google">
+                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+						</button>
+					</form>
+                    {% endblock %}
+                    {% endif %}
 
 				</div>
 				<!-- cart details -->
@@ -114,7 +127,7 @@
 			</div>
 			<div id="cd-search" class="cd-search">
 				<form action="#" method="post">
-					<input name="Search" type="search">
+					<input name="Search" type="search" placeholder="نام کالای مورد نظر خود را وارد کنید...">
 				</form>
 			</div>
 		</div>
@@ -138,7 +151,7 @@
 				<li>
 					<div class="banner-top1">
 						<div class="banner-info-wthree1">
-							<h3 style="color: #000;">استایل مورد علاقه خود را اجاره کنید</h3>
+							<h3 style="color: rgba(255,255,255,0.78);">دیگر نگران لباس خود برای مهمانی نباشید ، صرفه جویی در وقت و هزینه</h3>
 
 						</div>
 
@@ -155,7 +168,7 @@
 				<li>
 					<div class="banner-top3">
 						<div class="banner-info-wthree3">
-							<h3>دیگر نگران لباس خود برای مهمانی نباشید ، صرفه جویی در وقت و هزینه</h3>
+							<h3>استایل مورد علاقه ی خود را انتخاب کنید</h3>
 
 						</div>
 
@@ -232,7 +245,7 @@
 						<div class="products_list_container">
 
 							<div class="products_list_container_item" style="width: 25%;float: left;">
-								<img height="292px" src="images/Category-Women.jpg" alt="Category-Men">
+								<img height="225px" src="{% static "images/Category-Women.jpg" %}" alt="Category-Men">
 							</div>
 							<div class="products_list_container_item_text">
 								<br>
@@ -262,7 +275,7 @@
 								</ul>
 							</div>
 							<div class="products_list_container_item">
-								<img height="292px" src="images/Category-Men.jpg" alt="Category-Men">
+								<img height="225px" src="{% static "images/Category-Men.jpg" %}" alt="Category-Men">
 							</div>
 							<div class="products_list_container_item_text">
 								<br>
@@ -271,7 +284,7 @@
 								<br>
 								<ul style="list-style-type:none">
 									<li>
-											<a style="color: rgb(255, 255, 255);" href="">لباس</a>
+											<a style="color: rgb(255, 255, 255);" href="/items?sex=men">لباس</a>
 									</li>
 
 									<br>
@@ -320,7 +333,7 @@
 		</div>
 		<div class="col-sm-6 newsright">
 			<form action="#" method="post">
-				<input type="email" name="email" required="">
+				<input type="email" name="email" required="" placeholder="آدرس ایمیل خود را وارد نمایید">
 				<input type="submit" value="ثبت ایمیل">
 			</form>
 		</div>
@@ -334,15 +347,15 @@
 		<span id="toTopHover" style="opacity: 1;"> </span>
 	</a>
 	<!-- js -->
-	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="{% static "js/jquery-2.1.4.min.js" %}"></script>
 	<!-- //js -->
 	<!-- /nav -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<script src="js/classie.js"></script>
-	<script src="js/demo1.js"></script>
+	<script src="{% static "js/modernizr-2.6.2.min.js" %}"></script>
+	<script src="{% static "js/classie.js" %}"></script>
+	<script src="{% static "js/demo1.js" %}"></script>
 	<!-- //nav -->
 	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
+	<script src="{% static "js/minicart.js" %}"></script>
 	<script>
 		shoe.render();
 
@@ -358,14 +371,14 @@
 	</script>
 	<!-- //cart-js -->
 	<!--search-bar-->
-	<script src="js/search.js"></script>
+	<script src="{% static "js/search.js" %}"></script>
 	<!--//search-bar-->
 	<!-- footer -->
 	<div class="footer_agileinfo_w3">
 		<div class="footer_inner_info_w3ls_agileits">
 			<div class="col-md-3 footer-left">
 				<h2>
-					<a href="index.html">
+					<a href="/main">
 						<span>R</span>ent Poosh </a>
 				</h2>
 				<p>توضیحات</p>
@@ -426,7 +439,7 @@
 	</div>
 	</div>
 	<!-- //footer -->
-	<script src="js/responsiveslides.min.js"></script>
+	<script src="{% static "js/responsiveslides.min.js" %}"></script>
 	<script>
 		$(function () {
 			$("#slider4").responsiveSlides({
@@ -446,8 +459,8 @@
 	</script>
 	<!-- js for portfolio lightbox -->
 	<!-- start-smoth-scrolling -->
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="{% static "js/move-top.js" %}"></script>
+	<script type="text/javascript" src="{% static "js/easing.js" %}"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
@@ -460,7 +473,7 @@
 	</script>
 	<!-- //end-smoth-scrolling -->
 
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+	<script type="text/javascript" src="{% static "js/bootstrap-3.1.1.min.js" %}"></script>
 
 
 </body>
