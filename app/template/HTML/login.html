@@ -1,0 +1,68 @@
+{% extends 'tempelate.html' %}
+
+
+{% block content %}
+
+    {% load static %}
+
+    <head>
+  <link rel="stylesheet" href="{% static "css/register.css" %}">
+  <title>title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="keywords" />
+  <script type="application/x-javascript">
+    addEventListener("load", function () {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
+  <!-- //custom-theme -->
+  <link href="{% static "css/bootstrap.css" %}" rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="{% static "css/shop.css" %}" type="text/css" media="screen" property="" />
+  <link href="{% static "css/style7.css" %}" rel="stylesheet" type="text/css" media="all" />
+  <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
+  <!-- font-awesome-icons -->
+  <link href="{% static "css/font-awesome.css" %}" rel="stylesheet">
+  <!-- //font-awesome-icons -->
+  <link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
+    rel="stylesheet">
+  <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+
+</head>
+
+  <!--//login-->
+  <form style="text-align: right" action="/login" method="post">
+
+    <div class="container">
+      <label for="uname">
+        <b>ایمیل</b>
+      </label>
+      <input type="text"  name="uname" required oninvalid="this.setCustomValidity('لطفا ایمیل را وارد کنید')" oninput="setCustomValidity('')">
+
+      <label for="psw">
+        <b>کلمه عبور</b>
+      </label>
+      <input type="password" name="psw" required oninvalid="this.setCustomValidity('لطفا رمزعبور را وارد کنید')" oninput="setCustomValidity('')">
+        {% if error %}
+
+           <p style="color: red">{{ error }}</p>
+        {% endif %}
+      <button class="button-login" type="submit">ورود</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> مرا به خاطر بسپار
+      </label>
+    </div>
+
+    <div style="text-align:center" class="container" style="background-color:#f1f1f1">
+      <a  href="/register">ثبت نام در رنتپوش</a>
+    </div>
+  </form>
+
+  <!--//login-->
+{% endblock %}
